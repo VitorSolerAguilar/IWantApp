@@ -1,6 +1,9 @@
 using IWantApp.Endpoints.Categories;
+using IWantApp.Infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSqlServer<AplicationDbContext>(builder.Configuration["ConnectionStrings:IWantDb"]);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
