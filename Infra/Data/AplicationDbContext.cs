@@ -18,4 +18,11 @@ public class AplicationDbContext : DbContext
         builder.Entity<Category>().Property(c => c.Name).IsRequired();
 
     }
+
+    // Convencao que permite generalizar um parametro
+    // Toda string tera um tamanho maximo de 100 caracteres
+    protected override void ConfigureConventions(ModelConfigurationBuilder configuration)
+    {
+        configuration.Properties<string>().HaveMaxLength(100);
+    }
 }
