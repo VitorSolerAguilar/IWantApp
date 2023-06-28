@@ -12,17 +12,21 @@ public class CategoryPost
 
     public static IResult Action(CategoryRequest categoryRequest, AplicationDbContext context)
     {
-        var category = new Category
+        var category = new Category(categoryRequest.Name)
         {
-            Name = categoryRequest.Name,
             CraetedBy = "teste",
             CreatedOn = DateTime.Now,
             EditedBy = "testes",
             EditedOn = DateTime.Now,
         };
-        context.Categories.Add(category);
 
+        if (!category.IsValid)
+        {
+            return Results.BadRequest(category.Notifications);
+        }
+        context.Categories.Add(category);
         context.SaveChanges();
+
         return Results.Created("/categories/" + category.Id, category.Id);
     }
 }
