@@ -15,6 +15,10 @@ public class CategoryPost
         var category = new Category
         {
             Name = categoryRequest.Name,
+            CraetedBy = "teste",
+            CreatedOn = DateTime.Now,
+            EditedBy = "testes",
+            EditedOn = DateTime.Now,
         };
         context.Categories.Add(category);
 
