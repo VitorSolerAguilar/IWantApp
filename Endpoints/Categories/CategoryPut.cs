@@ -7,7 +7,7 @@ namespace IWantApp.Endpoints.Categories;
 public class CategoryPut
 {
     // Rota de category
-    public static string Template => "/categories/{id}";
+    public static string Template => "/categories/{id:guid}";
     public static string[] Methods => new string[] { HttpMethod.Put.ToString() };
     public static Delegate Handle => Action;
 
